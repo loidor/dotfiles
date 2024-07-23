@@ -1,0 +1,96 @@
+conky.config = {
+	background = false,
+	use_xft = true,
+	font = 'Ubuntu:pixelsize=14',
+  default_color = 'white',
+	xftalpha = 0.5,
+	update_interval = 1,
+	total_run_times = 0,
+	own_window = true,
+	own_window_argb_visual = true,
+	own_window_type = 'desktop',
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	double_buffer = true,
+	minimum_width = 260, minimum_height = 5,
+	maximum_width = 260,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+	default_color = 'white',
+	default_shade_color = 'white',
+	default_outline_color = 'white',
+	alignment = 'top_right',
+	gap_x = 20,
+	gap_y = 75,
+	no_buffers = true,
+	uppercase = false,
+	cpu_avg_samples = 2,
+	override_utf8_locale = false,
+};
+
+conky.text = [[
+$nodename ${hr 2 }
+${color white}Kernel:${alignr}$kernel
+${color white}Uptime:${alignr}$uptime
+
+Battery status:${alignr}${battery BAT1}
+${if_empty ${exec acpi -V | grep "Charging\|Full"}}Time remaining:${alignr}${battery_time BAT1}${endif}
+
+Intel Core i3-6157U @ ${freq_g} GHz${hr 2}
+Core 1: ${cpubar cpu1 8,175}${alignr}${cpu cpu1}%
+Core 2: ${cpubar cpu2 8,175}${alignr}${cpu cpu2}%
+Core 3: ${cpubar cpu3 8,175}${alignr}${cpu cpu3}%
+Core 4: ${cpubar cpu4 8,175}${alignr}${cpu cpu4}%
+
+#CPU utilisation$alignr ${cpu cpu0}%
+#${cpubar cpu0}
+#
+#${cpugraph ffffff}
+Memory ${hr 2}
+RAM $alignc $mem / $memmax $alignr $memperc%
+$membar
+
+Swap $alignc $swap / $swapmax $alignr $swapperc%
+$swapbar
+
+Top Processes ${hr 2}
+#$processes processes
+#
+Process ${alignr} PID   CPU  MEM
+
+${top name 1} $alignr ${top pid 1} ${top cpu 1} ${top mem 1}
+${top name 2} $alignr ${top pid 2} ${top cpu 2} ${top mem 2}
+${top name 3} $alignr ${top pid 3} ${top cpu 3} ${top mem 3}
+${top name 4} $alignr ${top pid 4} ${top cpu 4} ${top mem 4}
+${top name 5} $alignr ${top pid 5} ${top cpu 5} ${top mem 5}
+
+Network ${hr 2}
+Public IP:${alignr}${execi 900 curl icanhazip.com}
+
+Wifi ${hr 2}
+${if_existing /proc/net/route wlp2s0}SSID:${alignr}${wireless_essid wlp2s0}
+IP:${alignr}${addr wlp2s0}
+Up: ${alignr}${upspeed wlp2s0}
+Down: ${alignr}${downspeed wlp2s0}${else}Not connected${endif}
+
+Ethernet ${hr 2}
+${if_existing /proc/net/route enp3s0f1}
+IP:${alignr}${addr enp3s0f1}
+Up: ${alignr}${upspeed enp3s0f1}
+Down: ${alignr}${downspeed enp3s0f1}${else}Not connected${endif}
+
+USB Tethering ${hr 2}
+${if_existing /proc/net/route usb0}
+IP:${alignr}${addr usb0}
+Up: ${alignr}${upspeed usb0}
+Down: ${alignr}${downspeed usb0}${else}Not connected${endif}
+
+Bluetooth Tethering ${hr 2}
+${if_existing /proc/net/route bnep0}
+Up: ${alignr}${upspeed bnep0}
+Down: ${alignr}${downspeed bnep0}${else}Not connected${endif}
+
+]];
+
