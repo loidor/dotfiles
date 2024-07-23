@@ -154,6 +154,9 @@ which ag >/dev/null || alias ag="grep -rn"
 # Ubuntu effs up fd and calls it fdfind. Now it's fd again.
 ! which fdfind >/dev/null || alias fd=fdfind
 
+# Don't ever get stuck in vi again
+export EDITOR="micro"
+
 #############
 ## Aliases ##
 #############
@@ -168,6 +171,7 @@ alias o="xdg-open"
 alias c="clear"
 alias spotdl="spotdl --preload"
 alias tmuxa="tmux attach"
+alias chez="chezmoi"
 
 # Some error handling
 alias mc="mv"
