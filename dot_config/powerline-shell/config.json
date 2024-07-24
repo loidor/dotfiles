@@ -1,0 +1,14 @@
+{
+  "segments": [
+    "virtual_env",
+    "ssh",
+    "hostname",
+    "username",
+    "cwd",
+    "git",
+    "hg",
+    "jobs",
+    "root"
+  ],
+  "theme": "/home/loidor/.config/powerline-shell/themes/bubblegum.py"
+}
