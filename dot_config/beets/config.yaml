@@ -1,0 +1,44 @@
+directory : ~/music
+library: ~/.local/musiclibrary.db
+
+import:
+    move: yes
+    log: yes
+
+plugins: albumtypes discogs embedart fetchart ftintitle lastgenre mbsync missing scrub spotify the wlg lyrics
+
+albumtypes:
+    types:
+        - ep: 'EP'
+        - single: 'Single'
+        - soundtrack: 'OST'
+        - live: 'Live'
+        - compilation: 'Compilation'
+        - remix: 'Remix'
+    ignore_va: compilation
+    bracket: '[]'
+
+paths:
+    default: $albumartist/[$year]$atypes $album%aunique{}/$track $title
+    albumtype:soundtrack: Various Artists/$album%aunique{} [$year]$atypes/$track $artist - $title
+    singleton: Non-Album/$artist/$title
+    comp: Various Artists/$album%aunique{} [$year]$atypes/$track $artist - $title
+
+discogs:
+    user_token: "MpserZgabEbttJvnXsMSdUngbkzAfQXxcQsWEaAq"
+
+ftintitle:
+    format: (feat. {0})
+
+missing:
+    format: $albumartist - $album - $title
+    count: no
+    total: no
+
+wlg:
+    auto: no
+    force: yes
+    separator: ";"
+
+pluginpath:
+    /opt/whatlastgenre/plugin/beets/beetsplug
