@@ -3,7 +3,7 @@ library: ~/.local/musiclibrary.db
 
 import:
     move: yes
-    log: yes
+    log: ~/beetimport.log
 
 plugins: albumtypes discogs embedart fetchart ftintitle lastgenre mbsync missing scrub spotify the wlg lyrics
 
