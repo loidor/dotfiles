@@ -1,0 +1,118 @@
+#########################
+## Powerlevel10K stuff ##
+#########################
+
+# Makes zsh load instantly
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+# The wizard ran
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+
+#######################
+## Oh My Zsh configs ##
+#######################
+
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Zsh theme
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Uncomment the following line to use case-sensitive completion.
+CASE_SENSITIVE="true"
+
+# Zsh auto update
+zstyle ':omz:update' mode auto
+zstyle ':omz:update' frequency 7
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# History time stamp
+HIST_STAMPS="yyyy-mm-dd"
+
+# Plugins, see list at https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins-Overview
+plugins=(
+    battery
+    colored-man-pages
+    colorize
+    cp
+    extract
+    git
+    tmux)
+
+source $ZSH/oh-my-zsh.sh
+
+##############
+## User hax ##
+##############
+
+# ls
+#---
+
+if which eza >/dev/null; then
+    alias ls="eza"
+    alias ll="eza -l"
+    alias la="eza -la"
+    alias lt="eza -l --tree"
+else
+    alias ls="ls --color=always"
+    alias ll="ls -l"
+    alias la="ls -lA"
+fi
+
+for alias in lsl sls lsls sl l s; do alias $alias=ls; done
+
+# online tool(s)
+#---------------
+
+# Termbin
+alias tb="nc termbin.com 9999"
+
+# Setup some terminal file upload tool
+
+# other tool thingies
+#--------------------
+
+# grep to color, ag to grep if ag just isn't there
+alias grep="grep --color=always"
+which ag >/dev/null || alias ag="grep -rn"
+
+# Ubuntu effs up fd and calls it fdfind. No more!
+! which fdfind >/dev/null || alias fd="fdfind"
+
+# Editorials
+#-----------
+
+if which micro >/dev/null; then
+    alias nano="micro"
+    export EDITOR="micro"
+else
+    export EDITOR="nano"
+fi
+
+# Aliases
+#--------
+
+alias rm="rm -ri"
+alias update="sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean"
+alias .="source"
+alias ..="cd .."
+alias ...="cd ..; cd .."
+alias ....="cd ..; cd ..; cd .."
+alias chez="chezmoi"
+
+# Error handling
+#---------------
+
+alias mc="mv"
+alias cf="cd"
+alias apt="sudo apt"
+alias reboot="sudo reboot"
+alias poweroff="sudo poweroff"
+alias systemctl="sudo systemctl"
+alias please="sudo"
