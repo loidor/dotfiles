@@ -1,0 +1,6 @@
+set linenumbers
+set autoindent
+set emptyline
+set magic
+set tabsize 4
+set tabstospaces
