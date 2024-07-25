@@ -36,7 +36,6 @@
     dir                     # current directory
     vcs                     # git status
     chezmoi_shell           # chezmoi shell (https://www.chezmoi.io/)
-    status                  # last run status
     # prompt_char           # prompt symbol, the cool, green >
   )
 
@@ -45,7 +44,7 @@
   # automatically hidden when the input line reaches it. Right prompt above the
   # last prompt line gets hidden if it would overlap with left prompt.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-    #status                  # exit code of the last command
+    status                  # exit code of the last command
     #command_execution_time  # duration of the last command
     #background_jobs         # presence of background jobs
     #direnv                  # direnv status (https://direnv.net/)
