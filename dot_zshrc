@@ -57,6 +57,7 @@ source $ZSH/oh-my-zsh.sh
 # $PATH paths
 path+=("$HOME/.local/bin")
 path+=("$HOME/go/bin")
+path+=("/usr/local/go/bin")
 export PATH
 
 # ls
