@@ -1,8 +1,6 @@
 {
-    "clipboard": "external",
-    "colorscheme": "simple",
-    "autoindent": true,
     "autosu": true,
+    "colorscheme": "simple",
     "paste": true,
     "savecursor": true,
     "tabstospaces": true
