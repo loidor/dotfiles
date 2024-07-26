@@ -1,8 +1,20 @@
+### Functions
+
+# Check if command exists
+function can_haz() {
+    which "$@" > /dev/null 2>&1
+}
+
 ############
 ## Zgenom ##
 ############
 
-# Load it, bring it babe
+# Install if it doesn't exist
+if [ ! -d "$HOME/.zgenom" ]; then
+    git clone https://github.com/jandamm/zgenom.git "${HOME}/.zgenom"
+fi
+
+# Load it
 source "${HOME}/.zgenom/zgenom.zsh"
 
 # Update it
@@ -44,7 +56,6 @@ fi
 
 eval "$(oh-my-posh init zsh --config .oh-my-posh/Princess.omp.yaml)"
 
-
 ##############
 ## User hax ##
 ##############
@@ -58,7 +69,7 @@ export PATH
 # ls
 #---
 
-if which eza >/dev/null; then
+if can_haz eza; then
     alias ls="eza"
     alias ll="eza -l"
     alias la="eza -la"
@@ -84,15 +95,20 @@ alias tb="nc termbin.com 9999"
 
 # grep to color, ag to grep if ag just isn't there
 alias grep="grep --color=always"
-which ag >/dev/null || alias ag="grep -rn"
+
+if ! can_haz ag; then
+    alias ag="grep -rn"
+fi
 
 # Ubuntu effs up fd and calls it fdfind. No more!
-! which fdfind >/dev/null || alias fd="fdfind"
+if can_haz fdfind; then
+    alias fd="fdfind"
+fi
 
 # Editorials
 #-----------
 
-if which micro >/dev/null; then
+if can_haz micro; then
     alias nano="micro"
     export EDITOR="micro"
 else
