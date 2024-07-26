@@ -100,9 +100,13 @@ if ! can_haz ag; then
     alias ag="grep -rn"
 fi
 
-# Ubuntu effs up fd and calls it fdfind. No more!
+# Effed up package names un-effed
 if can_haz fdfind; then
     alias fd="fdfind"
+fi
+
+if can_haz batcat; then
+    alias cat="batcat --paging=never"
 fi
 
 # Editorials

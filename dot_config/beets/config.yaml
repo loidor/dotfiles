@@ -5,17 +5,16 @@ import:
     move: yes
     log: ~/beetimport.log
 
-match:
-    max_rec:
-        missing_tracks: low
-        unmatched_tracks: medium
-    ignored:
-        album
-        artist
-    ignored_media: ['Data CD', 'DVD', 'DVD-Video', 'Blu-ray', 'HD-DVD', 'VCD', 'SVCD', 'UMD', 'VHS']
-    required: year
+#match:
+#    max_rec:
+#        missing_tracks: low
+#        unmatched_tracks: medium
+#    ignored:
+#        album
+#        artist
+#    required: year
 
-plugins: albumtypes discogs embedart fetchart ftintitle lastgenre mbsync missing scrub spotify the wlg lyrics
+plugins: albumtypes discogs embedart fetchart ftintitle lastgenre mbsync missing replaygain scrub spotify the wlg lyrics
 
 albumtypes:
     types:
@@ -44,6 +43,9 @@ missing:
     format: $albumartist - $album - $title
     count: no
     total: no
+
+replaygain:
+    threads: 4    
 
 wlg:
     auto: no
