@@ -15,7 +15,7 @@ blocks:
     segments:
       - type: "command"
         alias: "SSH"
-        style: "plain"
+        style: diamond
         leading_diamond: 
         foreground: "p:plum"
         background: "p:white"
