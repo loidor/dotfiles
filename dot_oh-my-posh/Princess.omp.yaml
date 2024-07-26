@@ -30,6 +30,12 @@ blocks:
     type: rprompt
   - alignment: left
     segments:
+      - background: 'p:tan'
+        foreground: 'p:white'
+        leading_diamond:     
+        style: diamond
+        type: root
+        template: ' '
       - background: 'p:plum'
         foreground: 'p:white'
         leading_diamond: 
