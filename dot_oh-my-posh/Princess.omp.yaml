@@ -13,6 +13,15 @@ palette:
 blocks:
   - alignment: left
     segments:
+      - type: "command"
+        alias: "SSH"
+        style: "plain"
+        leading_diamond: 
+        foreground: "p:plum"
+        background: "p:white"
+        properties:
+            shell: "bash"
+            command: 'if [ "$SSH_CLIENT" ]; then echo "SSH"; fi'
       - type: battery
         style: diamond
         leading_diamond: 
@@ -76,9 +85,5 @@ blocks:
         trailing_diamond: 
         type: time
     type: prompt
-transient_prompt:
-    background: "transparent"
-    foreground: "p:white"
-    template: "{{ .Shell }}"
 final_space: true
 version: 2
