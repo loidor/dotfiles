@@ -72,6 +72,9 @@ if ! zgenom saved; then
     # Make directory listings more readable
     zgenom load supercrabtree/k
 
+    # Calc
+    zgenom load arzzen/calc.plugin.zsh
+
     # OMZ base library
     zgenom ohmyzsh
 
@@ -94,6 +97,16 @@ fi
 
 # If adding plugins, run zgenom reset to delete the current init.
 
+###########
+## $PATH ##
+###########
+
+# $PATH paths
+path+=("$HOME/.local/bin")
+path+=("$HOME/go/bin")
+path+=("/usr/local/go/bin")
+export PATH
+
 ################
 ## Oh My Posh ##
 ################
@@ -103,12 +116,6 @@ eval "$(oh-my-posh init zsh --config $HOME/.oh-my-posh/Princess.omp.yaml)"
 ##############
 ## User hax ##
 ##############
-
-# $PATH paths
-path+=("$HOME/.local/bin")
-path+=("$HOME/go/bin")
-path+=("/usr/local/go/bin")
-export PATH
 
 # ls
 #---
