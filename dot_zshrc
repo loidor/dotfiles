@@ -119,10 +119,6 @@ eval "$(oh-my-posh init zsh --config $HOME/.oh-my-posh/Princess.omp.yaml)"
 ## User hax ##
 ##############
 
-# Locale
-#-------
-export LC_ALL=sv_SE.utf8
-
 # ls
 #---
 
