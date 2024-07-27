@@ -111,6 +111,10 @@ export PATH
 ## Oh My Posh ##
 ################
 
+if ! can_haz oh-my-posh; then
+    curl -s https://ohmyposh.dev/install.sh | bash -s
+fi
+
 eval "$(oh-my-posh init zsh --config $HOME/.oh-my-posh/Princess.omp.yaml)"
 
 ##############
