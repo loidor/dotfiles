@@ -202,6 +202,12 @@ alias ...="cd ..; cd .."
 alias ....="cd ..; cd ..; cd .."
 alias chez="chezmoi"
 
+if can_haz btop; then
+    alias top="btop"
+else
+    echo "You should install btop, man."
+fi
+
 # Error handling
 #---------------
 
