@@ -3,5 +3,8 @@
     "colorscheme": "simple",
     "paste": true,
     "savecursor": true,
-    "tabstospaces": true
+    "tabstospaces": true,
+    "*.conf": {
+        "filetype": "ini"
+    }
 }
