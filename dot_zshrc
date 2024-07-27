@@ -41,9 +41,6 @@ if ! zgenom saved; then
     # https://github.com/unixorn/jpb.zshplugin
     # zgenom load unixorn/jpb.zshplugin
 
-    # Let's colourise more things. Works with grc.
-    zgenom load unixorn/warhol.plugin.zsh
-
     # Alias training wheels
     zgenom load djui/alias-tips
 
