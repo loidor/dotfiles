@@ -113,6 +113,7 @@ if ! can_haz oh-my-posh; then
 fi
 
 eval "$(oh-my-posh init zsh --config $HOME/.oh-my-posh/Princess.omp.yaml)"
+#eval "$(oh-my-posh init zsh --config $HOME/.oh-my-posh/catppuccin.omp.json)"
 
 ##############
 ## User hax ##
@@ -130,6 +131,7 @@ else
     alias ls="ls --color=always"
     alias ll="ls -l"
     alias la="ls -lA"
+    echo "You should consider installing eza. https://eza.rocks"
 fi
 
 for alias in lsl sls lsls sl l s; do alias $alias=ls; done
@@ -145,11 +147,21 @@ alias tb="nc termbin.com 9999"
 # other tool thingies
 #--------------------
 
+# if tmux, setup plugins
+if can_haz tmux; then
+    if [ ! -d "$HOME/.tmux" ]; then
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    fi
+else
+    echo "You should consider installing tmux. sudo apt install tmux -y"
+fi
+
 # grep to color, ag to grep if ag just isn't there
 alias grep="grep --color=always"
 
 if ! can_haz ag; then
     alias ag="grep -rn"
+    echo "You should consider installing ag - the Silver Searcher. sudo apt install silversearcher-ag -y"
 fi
 
 # Effed up package names un-effed
@@ -157,8 +169,14 @@ if can_haz fdfind; then
     alias fd="fdfind"
 fi
 
+if ! can_haz fd; then
+    echo "You should consider installing fd for a better find. https://github.com/sharkdp/fd"
+fi
+
 if can_haz batcat; then
-    alias cat="batcat --paging=never"
+    alias cat="batcat"
+else
+    echo "You should consider installing bat - it's like cat with wings. sudo apt install bat -y"
 fi
 
 # Editorials
@@ -169,6 +187,7 @@ if can_haz micro; then
     export EDITOR="micro"
 else
     export EDITOR="nano"
+    echo "You should drop everything you're doing and install micro. sudo apt install micro -y"
 fi
 
 # Aliases
