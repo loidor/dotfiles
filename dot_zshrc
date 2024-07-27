@@ -11,11 +11,11 @@ function can_haz() {
 
 # Install if it doesn't exist
 if [ ! -d "$HOME/.zgenom" ]; then
-    git clone https://github.com/jandamm/zgenom.git "${HOME}/.zgenom"
+    git clone https://github.com/jandamm/zgenom.git "$HOME/.zgenom"
 fi
 
 # Load it
-source "${HOME}/.zgenom/zgenom.zsh"
+source "$HOME/.zgenom/zgenom.zsh"
 
 # Update it
 zgenom autoupdate
@@ -101,7 +101,7 @@ fi
 ## Oh My Posh ##
 ################
 
-eval "$(oh-my-posh init zsh --config .oh-my-posh/Princess.omp.yaml)"
+eval "$(oh-my-posh init zsh --config $HOME/.oh-my-posh/Princess.omp.yaml)"
 
 ##############
 ## User hax ##
