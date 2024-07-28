@@ -1,10 +1,10 @@
 {
+    "*.conf": {
+        "filetype": "ini"
+    },
     "autosu": true,
     "colorscheme": "simple",
     "paste": true,
     "savecursor": true,
-    "tabstospaces": true,
-    "*.conf": {
-        "filetype": "ini"
-    }
+    "tabstospaces": true
 }

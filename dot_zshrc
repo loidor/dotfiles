@@ -173,6 +173,7 @@ if ! can_haz fd; then
 fi
 
 if can_haz batcat; then
+    alias bat="batcat"
     alias cat="batcat"
 else
     echo "You should consider installing bat - it's like cat with wings. sudo apt install bat -y"
@@ -220,3 +221,5 @@ alias reboot="sudo reboot"
 alias poweroff="sudo poweroff"
 alias systemctl="sudo systemctl"
 alias please="sudo"
+
+eval $(thefuck --alias)
