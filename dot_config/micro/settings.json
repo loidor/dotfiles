@@ -3,7 +3,7 @@
         "filetype": "ini"
     },
     "autosu": true,
-    "colorscheme": "simple",
+    "colorscheme": "catppuccin-mocha",
     "paste": true,
     "savecursor": true,
     "tabstospaces": true

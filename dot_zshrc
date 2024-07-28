@@ -5,12 +5,21 @@ function can_haz() {
     which "$@" > /dev/null 2>&1
 }
 
+# Check if dir exists
+function am_i() {
+    if [ -d "$@" ]; then
+        true
+    else
+        false
+    fi
+}
+
 ############
 ## Zgenom ##
 ############
 
 # Install if it doesn't exist
-if [ ! -d "$HOME/.zgenom" ]; then
+if ! am_i "$HOME/.zgenom"; then
     git clone https://github.com/jandamm/zgenom.git "$HOME/.zgenom"
 fi
 
@@ -148,7 +157,7 @@ alias tb="nc termbin.com 9999"
 
 # if tmux, setup plugins
 if can_haz tmux; then
-    if [ ! -d "$HOME/.tmux" ]; then
+    if ! am_i "$HOME/.tmux"; then
         git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     fi
 else
@@ -172,7 +181,15 @@ if ! can_haz fd; then
     echo "You should consider installing fd for a better find. https://github.com/sharkdp/fd"
 fi
 
+# Bat
 if can_haz batcat; then
+    # Get catppucin theme
+    if ! am_i "$HOME/.config/bat/themes"; then
+        mkdir -p "$(batcat --config-dir)/themes"
+        wget -P "$(batcat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
+        batcat cache --build
+    fi
+    export BAT_THEME="Catppuccin Mocha"
     alias bat="batcat"
     alias cat="batcat"
 else
@@ -185,6 +202,7 @@ fi
 if can_haz micro; then
     alias nano="micro"
     export EDITOR="micro"
+    export MICRO_TRUECOLOR=1
 else
     export EDITOR="nano"
     echo "You should drop everything you're doing and install micro. sudo apt install micro -y"
