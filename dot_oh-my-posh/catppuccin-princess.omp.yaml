@@ -1,25 +1,24 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
 
 palette:
-  white: '#FFFFFF'
-  rosewater: '#F5E0DC'
-  flamingo: '#F2CDCD'
-  pink: '#F5C3E7'
-  mauve: '#CBA6F7'
-  red: '#F38BA8'
-  maroon: '#EBA0AC'
-  peach: '#FAB387'
-  yellow: '#F9E2AF'
-  green: '#A6E3A1'
-  teal: '#94E2D5'
-  sky: '#89DCEB'
-  sapphire: '#74C7EC'
-  blue: '#89B4FA'
-  lavender: '#B4BEFE'
-  text: '#CDD6F4'
-  base: '#1E1E2E'
-  mantle: '#181825'
-  crust: '#11111B'
+  rosewater: '#dc8a78'
+  flamingo:  '#dd7878'
+  pink:      '#ea76cb'
+  mauve:     '#8839ef'
+  red:       '#d20f39'
+  maroon:    '#e64553'
+  peach:     '#fe640b'
+  yellow:    '#df8e1d'
+  green:     '#40a02b'
+  teal:      '#179299'
+  sky:       '#04a5e5'
+  sapphire:  '#209fb5'
+  blue:      '#1e66f5'
+  lavender:  '#7287fd'
+  text:      '#4c4f69'
+  base:      '#eff1f5'
+  mantle:    '#e6e9ef'
+  crust:     '#dce0e8'
 
 blocks:
   - alignment: left
@@ -29,14 +28,14 @@ blocks:
         style: diamond
         leading_diamond: 
         foreground: "p:mauve"
-        background: "p:white"
+        background: "p:base"
         properties:
             shell: "bash"
             command: 'if [ "$SSH_CLIENT" ]; then echo "SSH"; fi'
       - type: battery
         style: diamond
         leading_diamond: 
-        foreground: 'p:white'
+        foreground: 'p:base'
         background: 'p:peach'
         background_templates:
             - '{{if eq "Charging" .State.String}}p.blue{{end}}'
@@ -50,28 +49,28 @@ blocks:
     type: rprompt
   - alignment: left
     segments:
-      - background: 'p:tan'
-        foreground: 'p:white'
+      - background: 'p:red'
+        foreground: 'p:base'
         leading_diamond:     
         style: diamond
         type: root
         template: ' '
       - background: 'p:mauve'
-        foreground: 'p:white'
+        foreground: 'p:base'
         leading_diamond: 
         style: diamond
         template: '{{ .UserName }}@{{ .HostName }} '
         type: session
       - background: 'p:pink'
-        foreground: 'p:white'
+        foreground: 'p:base'
         powerline_symbol: 
         properties:
           style: folder
         style: powerline
         template: ' {{ .Path }} '
         type: path
-      - background: 'p:flamingo'
-        foreground: 'p:white'
+      - background: 'p:teal'
+        foreground: 'p:base'
         powerline_symbol: 
         properties:
           branch_icon: ''
@@ -82,13 +81,7 @@ blocks:
         template: ' ➜ ({{ .UpstreamIcon }}{{ .HEAD }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}) '
         type: git
       - background: 'p:sky'
-        foreground: 'p:white'
-        powerline_symbol: 
-        style: powerline
-        template: '  {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} '
-        type: node
-      - background: 'p:lavender'
-        foreground: 'p:white'
+        foreground: 'p:base'
         properties:
           time_format: '15:04'
         style: diamond
