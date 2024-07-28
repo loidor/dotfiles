@@ -1,0 +1,101 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+palette:
+  white: '#FFFFFF'
+  rosewater: '#F5E0DC'
+  flamingo: '#F2CDCD'
+  pink: '#F5C3E7'
+  mauve: '#CBA6F7'
+  red: '#F38BA8'
+  maroon: '#EBA0AC'
+  peach: '#FAB387'
+  yellow: '#F9E2AF'
+  green: '#A6E3A1'
+  teal: '#94E2D5'
+  sky: '#89DCEB'
+  sapphire: '#74C7EC'
+  blue: '#89B4FA'
+  lavender: '#B4BEFE'
+  text: '#CDD6F4'
+  base: '#1E1E2E'
+  mantle: '#181825'
+  crust: '#11111B'
+
+blocks:
+  - alignment: left
+    segments:
+      - type: "command"
+        alias: "SSH"
+        style: diamond
+        leading_diamond: 
+        foreground: "p:mauve"
+        background: "p:white"
+        properties:
+            shell: "bash"
+            command: 'if [ "$SSH_CLIENT" ]; then echo "SSH"; fi'
+      - type: battery
+        style: diamond
+        leading_diamond: 
+        foreground: 'p:white'
+        background: 'p:peach'
+        background_templates:
+            - '{{if eq "Charging" .State.String}}p.blue{{end}}'
+            - '{{if eq "Discharging" .State.String}}p.peach{{end}}'
+            - '{{if eq "Full" .State.String}}p.green{{end}}'
+        template: " {{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }} "
+        properties:
+            discharging_icon: "󰂍 "
+            charging_icon: "󰂄 "
+            charged_icon: "󱈏 "
+    type: rprompt
+  - alignment: left
+    segments:
+      - background: 'p:tan'
+        foreground: 'p:white'
+        leading_diamond:     
+        style: diamond
+        type: root
+        template: ' '
+      - background: 'p:mauve'
+        foreground: 'p:white'
+        leading_diamond: 
+        style: diamond
+        template: '{{ .UserName }}@{{ .HostName }} '
+        type: session
+      - background: 'p:pink'
+        foreground: 'p:white'
+        powerline_symbol: 
+        properties:
+          style: folder
+        style: powerline
+        template: ' {{ .Path }} '
+        type: path
+      - background: 'p:flamingo'
+        foreground: 'p:white'
+        powerline_symbol: 
+        properties:
+          branch_icon: ''
+          fetch_stash_count: true
+          fetch_status: false
+          fetch_upstream_icon: true
+        style: powerline
+        template: ' ➜ ({{ .UpstreamIcon }}{{ .HEAD }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}) '
+        type: git
+      - background: 'p:sky'
+        foreground: 'p:white'
+        powerline_symbol: 
+        style: powerline
+        template: '  {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} '
+        type: node
+      - background: 'p:lavender'
+        foreground: 'p:white'
+        properties:
+          time_format: '15:04'
+        style: diamond
+        template: ' ♥ {{ .CurrentDate | date .Format }} '
+        trailing_diamond: 
+        type: time
+    type: prompt
+final_space: true
+shell_integration: true
+version: 2
