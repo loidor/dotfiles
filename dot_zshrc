@@ -213,6 +213,7 @@ fi
 
 alias c="clear"
 alias rm="rm -rf"
+alias pip="pipx"
 alias update="sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean"
 alias .="source"
 alias ..="cd .."
@@ -240,4 +241,4 @@ alias poweroff="sudo poweroff"
 alias systemctl="sudo systemctl"
 alias please="sudo"
 
-eval $(thefuck --alias)
+#eval $(thefuck --alias)
